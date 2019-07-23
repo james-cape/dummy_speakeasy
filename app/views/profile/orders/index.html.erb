@@ -1,0 +1,25 @@
+<h1>User Orders</h1>
+
+<% if @orders.empty? %>
+  <p>You have no orders yet</p>
+<% else %>
+  <% @orders.each do |order| %>
+    <%= tag.div class: "card float-left m-3 order-card" do %>
+      <%= tag.div class: "card-body" do %>
+        <%= tag.section id: "order-#{order.id}" do %>
+          <p><%= link_to "Order ID #{order.id}", profile_order_path(order) %></p>
+          <p>Created: <%= order.created_at %></p>
+          <p>Last Update: <%= order.updated_at %></p>
+          <p>Status: <%= order.status %></p>
+          <p>Item Count: <%= order.total_item_count %></p>
+          <p>Total Cost: <%= order.total_cost %></p>
+          <% if order.address == nil %>
+            <p>No address on file</p>
+          <% else %>
+            <p>Shipping Address: <%= order.address.street %>, <%= order.address.city %> <%= order.address.state %> <%= order.address.zip_code %></p>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

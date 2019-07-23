@@ -1,0 +1,33 @@
+<%= tag.div id: "order-#{@order.id}" do %>
+  <p>Customer Name: <%= @user.name %></p>
+  <p>Customer Address:</p>
+  <% if @user.addresses == [] %>
+    <p>No address on file</p>
+  <% else %>
+    <p><%= @user.addresses.first.street %></p>
+    <p><%= @user.addresses.first.city %>, <%= @user.addresses.first.state %> <%= @user.addresses.first.zip_code %></p>
+  <% end %>
+
+  <p>Order Status: <%= @order.status %></p>
+
+  <% @order_items.each do |oitem| %>
+    <div class="card float-left m-3 order-item-card" id="oitem-<%= oitem.id %>">
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to oitem.item.name, item_path(oitem.item) %></h5>
+
+        <p><%= oitem.item.description %></p>
+        <img id="item-<%= oitem.item.id %>-image" alt="image for <%= oitem.item.name %>" src="<%= oitem.item.image %>" width=150 />
+        <p>Merchant: <%= oitem.item.user.name %></p>
+        <p>Price: <%= number_to_currency(oitem.price) %></p>
+        <p>Quantity: <%= oitem.quantity %></p>
+        <p>Subtotal: <%= number_to_currency(oitem.subtotal) %></p>
+        <p>Fulfilled: <%= oitem.fulfilled ? 'Yes' : 'No' %></p>
+        <% if !oitem.fulfilled && oitem.inventory_available %>
+          <%= button_to 'Fulfill', dashboard_fulfill_order_item_path(oitem), method: :put %>
+        <% elsif !oitem.fulfilled && !oitem.inventory_available %>
+          <p>You cannot fulfill this item</p>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

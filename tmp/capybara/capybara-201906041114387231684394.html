@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LittleShop</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" media="all" href="/assets/application-ebf06cc394878f1c918ecd38e4e36f554ff4a184eca5c357d59de73a453447ed.css" />
+    <script src="/assets/application-ee939ef0d411f5751238afe8737ed687f7ce95c26038eafdcfe430a02a620569.js"></script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home</a>
+          <span class="sr-only">(current)</span>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/items">Items</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/merchants">Merchants</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav mr-auto navbar-right">
+      <li class="nav-item"><a class="nav-link disabled">Logged in as Merchant Name 1</a></li>
+      <li class="nav-item"><a class="nav-link" href="/dashboard">Dashboard</a></li>
+
+
+      <li class="nav-item"><a class="nav-link" href="/logout">Log out</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+    <div class="container" id="body-content-no-nav">
+
+      <h1>Merchant Dashboard</h1>
+
+<div class="card float-left m-3 order-item-card">
+  <div class="card-body">
+    <h5 class="card-title">Merchant Name 1</h5>
+    <p>Role: merchant</p>
+    <p>Email: merchant_1@gmail.com</p>
+    <p>Address: Address 1</p>
+    <p>City: City 1</p>
+    <p>State: State 1</p>
+    <p>Zip: Zip 1</p>
+    
+  </div>
+</div>
+
+<h2>Bulk Discounts</h2>
+
+<form class="button_to" method="get" action="/dashboard/discounts/new"><input type="submit" value="Add New Bulk Discount" /></form>
+</br>
+  <h3>No discounts on file</h3>
+
+
+<div class="card">
+  <section class="statistics card-body float-left m-4">
+    <section id="top-items-sold-by-quantity" class="card-body float-left m-2">
+      <h5 class="card-title">Top Items Sold by Quantity</h5>
+      <ul>
+      </ul>
+</section>    <section id="percent-of-items-sold" class="card-body float-left m-2">
+      <h5 class="card-title">Sold Items Percentage</h5>
+        <p> You have sold 0 items, NaN% of your total inventory</p>
+</section>    <section id="top-states-by-items-shipped" class="card-body float-left m-2">
+      <h5 class="card-title">Top States by Items Shipped</h5>
+      <ul>
+      </ul>
+</section>    <section id="top-cities-by-items-shipped" class="card-body float-left m-2">
+      <h5 class="card-title">Top Cities by Items Shipped</h5>
+      <ul>
+      </ul>
+</section>    <section id="top-users-by-money-spent" class="card-body float-left m-2">
+      <h5 class="card-title">Top Users by Money Spent</h5>
+      <ul>
+      </ul>
+</section>    <section id="top-user-by-order-count" class="card-body float-left m-2">
+      <h5 class="card-title">Top User by Order Count</h5>
+        <p>N/A</p>
+</section>    <section id="top-user-by-item-count" class="card-body float-left m-2">
+      <h5 class="card-title">Top User by Item Count</h5>
+        <p>N/A</p>
+</section></section></div>
+<section>
+  <p>
+  <a href="/dashboard/items">Items for Sale</a>
+  </p>
+</section>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Created Date</th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+
+    </div>
+  </body>
+</html>

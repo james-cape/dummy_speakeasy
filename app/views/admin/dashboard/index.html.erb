@@ -1,0 +1,45 @@
+<h1>Admin Dashboard</h1>
+
+<%= tag.section id: 'packaged-orders' do %>
+  <h2>Packaged Orders</h2>
+  <ul>
+  <% @packaged_orders.each do |order| %>
+    <li>
+      <%= render partial: "order_card", locals: {order: order} %>
+    </li>
+  <% end %>
+  </ul>
+<% end %>
+
+<%= tag.section id: 'pending-orders' do %>
+  <h2>Pending Orders</h2>
+  <ul>
+  <% @pending_orders.each do |order| %>
+    <li>
+      <%= render partial: "order_card", locals: {order: order} %>
+    </li>
+  <% end %>
+  </ul>
+<% end %>
+
+<%= tag.section id: 'shipped-orders' do %>
+  <h2>Shipped Orders</h2>
+  <ul>
+  <% @shipped_orders.each do |order| %>
+    <li>
+      <%= render partial: "order_card", locals: {order: order} %>
+    </li>
+  <% end %>
+  </ul>
+<% end %>
+
+<%= tag.section id: 'cancelled-orders' do %>
+  <h2>Cancelled Orders</h2>
+  <ul>
+  <% @cancelled_orders.each do |order| %>
+    <li>
+      <%= render partial: "order_card", locals: {order: order} %>
+    </li>
+  <% end %>
+  </ul>
+<% end %>

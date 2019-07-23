@@ -1,0 +1,50 @@
+<%= form_for @user, url: form_submit_path do |f| %>
+<p>
+  <%= f.label :name %>:
+  <%= f.text_field :name %>
+</p>
+<%= fields_for @address do |fa| %>
+  <p>
+    <%= fa.label :street %>:
+    <%= fa.text_field :street, :required => true %>
+  </p>
+
+  <p>
+    <%= fa.label :city %>:
+    <%= fa.text_field :city, :required => true %>
+  </p>
+
+  <p>
+    <%= fa.label :state %>:
+    <%= fa.text_field :state, :required => true %>
+  </p>
+
+  <p>
+    <%= fa.label :zip_code %>:
+    <%= fa.text_field :zip_code, :required => true %>
+  </p>
+
+  <p>
+    <%= f.hidden_field :nickname, value: "home" %>
+  </p>
+<% end %>
+
+<p>
+  <%= f.label :email %>:
+  <%= f.text_field :email %>
+</p>
+
+<p>
+  <%= f.label :password %>:
+  <%= f.password_field :password %>
+</p>
+
+<p>
+  <%= f.label :password_confirmation %>:
+  <%= f.password_field :password_confirmation %>
+</p>
+
+<p>
+  <%= f.submit "Submit" %>
+</p>
+<% end %>

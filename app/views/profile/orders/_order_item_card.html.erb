@@ -1,0 +1,13 @@
+<div class="card float-left m-3 order-item-card">
+  <div class="card-body">
+    <h5 class="card-title"><%= link_to oitem.item.name, item_path(oitem.item) %></h5>
+
+    <p><%= oitem.item.description %></p>
+    <img id="item-<%= oitem.item.id %>-image" alt="image for <%= oitem.item.name %>" src="<%= oitem.item.image %>" width="<%= img_width %>" />
+    <p>Merchant: <%= oitem.item.user.name %></p>
+    <p>Price: <%= number_to_currency(oitem.price) %></p>
+    <p>Quantity: <%= oitem.quantity %></p>
+    <p>Subtotal: <%= number_to_currency(oitem.subtotal) %></p>
+    <p>Fulfilled: <%= oitem.fulfilled ? 'Yes' : 'No' %></p>
+  </div>
+</div>

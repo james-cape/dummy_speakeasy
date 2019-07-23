@@ -1,0 +1,26 @@
+<h1>Items Catalog</h1>
+
+<%= tag.section id: 'statistics' do %>
+  <%= tag.section id: 'popular-items' do %>
+    <h4>Popular Items</h4>
+    <ol>
+    <% @popular_items.each do |item| %>
+    <li><%= item.name %>, total ordered: <%= item.total_ordered %></li>
+    <% end %>
+    </ol>
+  <% end %>
+  <%= tag.section id: 'unpopular-items' do %>
+    <h4>Least Popular Items</h4>
+    <ol>
+    <% @unpopular_items.each do |item| %>
+    <li><%= item.name %>, total ordered: <%= item.total_ordered %></li>
+    <% end %>
+    </ol>
+  <% end %>
+<% end %>
+
+<% @items.each do |item| %>
+  <%= tag.section id: "item-#{item.id}" do %>
+  <%= render partial: "card", locals: {item: item, style_class: "item-index-card"}%>
+  <% end %>
+<% end %>

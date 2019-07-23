@@ -1,0 +1,56 @@
+<h1>Profile Page for <%= @user.name %></h1>
+
+<section id="profile-data">
+  <h2>Order Data</h2>
+  <p>Email: <%= @user.email %></p>
+  <p>Role: <%= @user.role %></p>
+  <aside id="address-details">
+    <h3>Home Address:</h3>
+    <% if @user.addresses == [] %>
+      <p>No Home Address on File</p>
+    <% else %>
+      <p><%= @user.addresses.last.street %></p>
+      <p>
+        <%= @user.addresses.last.city %>,
+        <%= @user.addresses.last.state %>
+        <%= @user.addresses.last.zip_code %>
+      </p>
+    <% end %>
+  </aside>
+  <p><%= link_to 'Edit Profile Data', edit_profile_path unless current_admin? %></p>
+</section>
+
+<section id="orders-data">
+  <h2>Order Data</h2>
+  <p><% if @user.orders.any? %>
+  <%= link_to 'Customer Orders', profile_orders_path %>
+  <% else %>
+  You have no orders yet.
+  <% end %></p>
+</section>
+
+<section id="address-handler">
+  <h2>Addresses on File:</h2>
+  <% if @user.addresses == [] %>
+    <p>No addresses on file</p>
+  <% else %>
+    <% @user.addresses.each do |address| %>
+    <br>
+      <section id="address-details-<%= address.id %>">
+        Nickname: <%= address.nickname %>
+        Street: <%= address.street %>
+        City: <%= address.city %>
+        State: <%= address.state %>
+        Zip Code: <%= address.zip_code %>
+        <% if current_reguser? && !address.in_completed_order? %>
+          <%= button_to 'Edit This Address', edit_profile_address_path(address.id), method: "get" %>
+          <%= button_to 'Delete This Address', profile_address_path(address.id), method: :delete %>
+        <% end %>
+      </section>
+    <% end %>
+  <% end %>
+  <% if current_reguser? %>
+  <br>
+    <%= button_to 'Add New Address', new_profile_address_path, method: "get"%>
+  <% end %>
+</section>

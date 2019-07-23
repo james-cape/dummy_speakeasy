@@ -1,0 +1,9 @@
+<%= tag.section id: "order-#{order.id}" do %>
+  <%= link_to "Order ID #{order.id}", admin_order_path(order) %>,
+  Customer: <%= link_to order.user.name, admin_user_path(order.user) %>,
+  Created: <%= order.created_at %>
+
+  <% if order.status == 'packaged' %>
+  <%= button_to "Ship Order", admin_order_ship_path(order), method: :patch %>
+  <% end %>
+<% end %>

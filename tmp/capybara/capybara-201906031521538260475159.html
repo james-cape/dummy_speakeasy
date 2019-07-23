@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LittleShop</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" media="all" href="/assets/application-ebf06cc394878f1c918ecd38e4e36f554ff4a184eca5c357d59de73a453447ed.css" />
+    <script src="/assets/application-ee939ef0d411f5751238afe8737ed687f7ce95c26038eafdcfe430a02a620569.js"></script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home</a>
+          <span class="sr-only">(current)</span>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/items">Items</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/merchants">Merchants</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/cart">Cart: 0</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav mr-auto navbar-right">
+      <li class="nav-item"><a class="nav-link disabled">Logged in as User Name 1</a></li>
+      <li class="nav-item"><a class="nav-link" href="/profile">Profile</a></li>
+      <li class="nav-item"><a class="nav-link" href="/profile/orders">Orders</a></li>
+
+
+      <li class="nav-item"><a class="nav-link" href="/logout">Log out</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+    <div class="container" id="body-content-no-nav">
+
+      <div id="order-30592">
+  <p>Order ID 30592</p>
+  <p>Created: 2019-06-02 21:21:52 UTC</p>
+  <p>Last Update: 2019-06-03 21:21:52 UTC</p>
+  <p>Status: pending</p>
+  <p>Item Count: 8</p>
+  <p>Total Cost: $13.00</p>
+
+    <p>No shipping addresses on file</p>
+
+  <p><form class="button_to" method="post" action="/profile/orders/30592"><input type="hidden" name="_method" value="delete" /><input type="submit" value="Cancel Order" /></form></p>
+
+
+    Update the shipping address on file:</br>
+    <form action="/profile/orders/30592" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" />
+        <input id="radio-button-for-address-25700" name="shipping_id" value="25700" type="radio" checked> : Address 1, City 1, State 1 Zip 1 <br/>
+        <input id="radio-button-for-address-25701" name="shipping_id" value="25701" type="radio" checked> : Address 2, City 2, State 2 Zip 2 <br/>
+        <input id="radio-button-for-address-25702" name="shipping_id" value="25702" type="radio" checked> : Address 3, City 3, State 3 Zip 3 <br/>
+
+      <input type="submit" name="commit" value="Update Shipping Address" data-disable-with="Update Shipping Address" />
+</form>
+
+
+    <div id="oitem-35244">
+      <div class="card float-left m-3 order-item-card">
+  <div class="card-body">
+    <h5 class="card-title"><a href="/items/37625">Item Name 1</a></h5>
+
+    <p>Description 1</p>
+    <img id="item-37625-image" alt="image for Item Name 1" src="https://picsum.photos/200/300?image=1" width="150" />
+    <p>Merchant: Merchant Name 1</p>
+    <p>Price: $1.00</p>
+    <p>Quantity: 3</p>
+    <p>Subtotal: $3.00</p>
+    <p>Fulfilled: No</p>
+  </div>
+</div>
+</div>    <div id="oitem-35245">
+      <div class="card float-left m-3 order-item-card">
+  <div class="card-body">
+    <h5 class="card-title"><a href="/items/37626">Item Name 2</a></h5>
+
+    <p>Description 2</p>
+    <img id="item-37626-image" alt="image for Item Name 2" src="https://picsum.photos/200/300?image=2" width="150" />
+    <p>Merchant: Merchant Name 2</p>
+    <p>Price: $2.00</p>
+    <p>Quantity: 5</p>
+    <p>Subtotal: $10.00</p>
+    <p>Fulfilled: Yes</p>
+  </div>
+</div>
+</div>
+</div>
+    </div>
+  </body>
+</html>

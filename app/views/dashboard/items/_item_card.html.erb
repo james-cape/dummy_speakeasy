@@ -1,0 +1,23 @@
+<%= tag.div class: "card float-left m-3 item-card" do %>
+  <%= tag.section class: "card-body" do %>
+
+  <p>ID: <%= item.id %></p>
+  <p>Name: <%= link_to item.name, item_path(item) %></p>
+  <a href="<%= item_path(item) %>">
+  <img id="item-<%= item.id %>-image" alt="image for <%= item.name %>" src="<%= item.image %>" width="<%= img_width %>" />
+  </a>
+  <p>Price: <%= number_to_currency(item.price) %></p>
+  <p>Inventory: <%= item.inventory %></p>
+  <% if item.active? %>
+    <%= button_to "Disable Item", dashboard_disable_item_path(item), method: :patch %>
+  <% else %>
+    <%= button_to "Enable Item", dashboard_enable_item_path(item), method: :patch %>
+  <% end %>
+
+  <%= link_to "edit", edit_dashboard_item_path(item) %>
+
+  <% unless item.ordered? %>
+    <%= button_to "Delete Item", dashboard_item_path(item), method: :delete %>
+  <% end %>
+  <% end %>
+<% end %>

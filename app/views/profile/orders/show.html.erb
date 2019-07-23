@@ -1,0 +1,41 @@
+<%= tag.div id: "order-#{@order.id}" do %>
+  <p>Order ID <%= @order.id %></p>
+  <p>Created: <%= @order.created_at %></p>
+  <p>Last Update: <%= @order.updated_at %></p>
+  <p>Status: <%= @order.status %></p>
+  <p>Item Count: <%= @order.total_item_count %></p>
+  <p>Total Cost: <%= number_to_currency(@order.total_cost) %></p>
+
+  <% if @shipping_address == nil %>
+    <p>No shipping addresses on file</p>
+  <% else %>
+    <section id="current-shipping-address">
+      <p>Current Shipping Address: <%= @shipping_address.street %>, <%= @shipping_address.city %>, <%= @shipping_address.state %>, <%= @shipping_address.zip_code %></p>
+    </section>
+  <% end %>
+
+  <% if @order.status == 'pending' || @order.status == 'packaged' %>
+  <p><%= button_to 'Cancel Order', profile_order_path(@order), method: :delete %></p>
+  <% end %>
+
+  <% if @order.status == 'pending' %>
+
+    Update the shipping address on file:</br>
+    <%= form_tag profile_update_address_path(@order), method: :patch do |f| %>
+      <% current_user.addresses.each do |address| %>
+        <input id="radio-button-for-address-<%= address.id %>" name="shipping_id" value="<%= address.id %>" type="radio" checked> <%= address.nickname %>: <%= address.street %>, <%= address.city %>, <%= address.state %> <%= address.zip_code %> <br/>
+      <% end %>
+
+      <%= submit_tag "Update Shipping Address" %>
+    <% end %>
+
+
+  <% end %>
+
+  <% @order.order_items.each do |oitem| %>
+    <%= tag.div id: "oitem-#{oitem.id}" do %>
+      <%= render partial: "/profile/orders/order_item_card", locals: {oitem: oitem, img_width: 150} %>
+    <% end %>
+  <% end %>
+
+<% end %>

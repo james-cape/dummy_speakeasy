@@ -1,0 +1,54 @@
+<h1>Cart</h1>
+<% if cart.contents.empty? %>
+  <p>Your Cart is empty.</p>
+<% else %>
+  <h3>Total: <%= number_to_currency(cart.total) %></h3>
+
+  <% if current_user && current_user.addresses != [] %>
+
+    Select a shipping address:</br>
+    <%= form_tag profile_orders_path do |f| %>
+      <% current_user.addresses.each do |address| %>
+        <input id="radio-button-for-address-<%= address.id %>" name="shipping_id" value="<%= address.id %>" type="radio" checked> <%= address.nickname %>: <%= address.street %>, <%= address.city %>, <%= address.state %> <%= address.zip_code %> <br/>
+      <% end %>
+
+      <%= submit_tag "Check Out" %>
+    <% end %>
+
+  <% elsif current_user %>
+
+    You have no address on file
+    <%= button_to 'Add New Address', new_profile_address_path, method: "get"%>
+
+  <% else %>
+
+    <p>You must <%= link_to "register", registration_path %>
+      or <%= link_to "log in", login_path %> to check out.</p>
+  <% end %>
+  <%= button_to "Empty Cart", empty_cart_path, method: :delete %>
+  <ul id="items"><br>
+    <% cart.items.each do |item, quantity| %>
+      <li id="item-<%= item.id %>">
+        <%= item.name %><br>
+        <br>
+        <% if item.find_discount(cart) == nil %>
+          Discount: No current discounts<br>
+        <% else %>
+          Discount: <%= item.find_discount(cart).description %>: <%= item.find_discount(cart).discount_amount.round %>% off!<br>
+        <% end %>
+        <%= image_tag item.image %><br>
+        Sold By: <%= item.user.name %><br>
+        <%=  number_to_currency(item.price) %><br>
+        quantity: <%= quantity %><br>
+        subtotal: <%= number_to_currency(cart.subtotal(item)) %><br>
+        <% if item.find_discount(cart) %>
+          Discounted Subtotal: <%= number_to_currency(cart.discounted_subtotal(item))  %><br>
+        <% end %>
+
+        <%= button_to "delete", remove_item_path(item), method: :delete %>
+        <%= button_to "+", cart_item_path(item), method: :post %>
+        <%= button_to "-", cart_item_path(item), method: :patch %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

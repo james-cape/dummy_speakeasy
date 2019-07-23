@@ -1,0 +1,23 @@
+<%= tag.div class: "card float-left m-3 merchant-card" do %>
+  <%= tag.section class: "card-body" do %>
+    <%= tag.h5 class: "card-title" do %>
+      <% if current_admin? %>
+        <%= link_to merchant.name, admin_merchant_path(merchant) %>
+      <% else %>
+        <%= merchant.name %>
+      <% end %>
+    <% end %>
+    <p><%= merchant.addresses.first.city %>, <%= merchant.addresses.first.state %></p>
+    <p>Registered Date: <%= merchant.created_at %><br/>
+
+    <% if current_admin? %>
+    <p>
+    <% if merchant.active %>
+    <%= button_to 'Disable Merchant', admin_disable_merchant_path(merchant), method: :patch %>
+    <% else %>
+    <%= button_to 'Enable Merchant', admin_enable_merchant_path(merchant), method: :patch %>
+    <% end %>
+    </p>
+    <% end %>
+  <% end %>
+<% end %>
