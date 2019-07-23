@@ -10,6 +10,4 @@ To fail a build on purpose, add an open parantheses in the top line of the Gemfi
 1. `git commit -m "commit message"`
 1. `git push heroku master`
 
-
-
 To un-fail, repeat the steps above, but remove the open parantheses.
