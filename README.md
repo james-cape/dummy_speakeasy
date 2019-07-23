@@ -2,6 +2,7 @@
 
 This repo serves as a test repo for Speakeasy.
 
+
 To fail a build on purpose, add an open parantheses in the top line of the Gemfile.lock:
 1. Open this repo in a text editor
 1. Go to Gemfile.lock
